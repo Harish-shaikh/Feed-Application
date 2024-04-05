@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{user/base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+
+					<div th:if="${session.message}"
+						th:classappend="${session.message.type}" class="alert"
+						role="alert">
+						<p class="text-center" th:text="${session.message.content}"></p>
+						<th:block th:text="${@removeSession.removeSession()}"></th:block>
+					</div>
+					<!-- Check if myposts is empty -->
+					<th:block th:if="${#lists.isEmpty(myposts)}">
+						<div class="card-header mt-2">
+							<p class="text-center">Sorry, no posts available.</p>
+						</div>
+					</th:block>
+					<!-- If myposts is not empty, display the table -->
+					<table class="table" th:if="${not #lists.isEmpty(myposts)}">
+						<tbody>
+							<tr>
+								<td><strong>Post Image:</strong></td>
+								<td><strong>Post Title:</strong></td>
+								<td><strong>Post Date:</strong></td>
+								<td></td>
+								<!-- Empty column for buttons -->
+							</tr>
+							<tr th:each="p : ${myposts}">
+								<td>
+									<div class="postImages">
+										<img th:src="@{'/images/'+${p.postImageUrl}}" alt=""
+											style="width: 4rem; height: 4rem;" />
+									</div>
+								</td>
+								<td th:text="${p.postTitle}"></td>
+								<td th:text="${p.postDate}"></td>
+								<td><div class="d-flex ">
+										<form th:action="@{'/api1/user/updatepost/'+${p.postId}}"
+											method="post">
+											<button class="btn btn-primary me-2">Update</button>
+										</form>
+										<a th:href="@{'/api1/user/deletepost/'+${p.postId}}"
+											class="btn btn-danger">Delete</a>
+									</div></td>
+							</tr>
+						</tbody>
+					</table>
+					<!-- Check for deleteSuccess flash attribute -->
+					<!-- <div class="alert alert-success" th:if="${#flash.containsKey('deleteSuccess')}">
+                    Post deleted successfully!
+                </div> -->
+				</div>
+			</div>
+		</div>
+	</section>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:fragment="layout(content)">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${title}">Document</title>
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+	crossorigin="anonymous">
+<!-- css link -->
+<link rel="stylesheet" th:href="@{/css/users.css}" />
+</head>
+<body>
+	<!-- Navber -->
+	<nav class="navbar navbar-expand-lg  bg-dark">
+		<div class="container-fluid ">
+			<a class="navbar-brand text-light" href="#">Feeds</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<form class="d-flex ms-5 mg-l-6" role="search">
+					<input class="form-control me-2" type="search" placeholder="Search"
+						aria-label="Search">
+					<button class="btn btn-outline-light" type="submit">Search</button>
+				</form>
+
+				<div class="Dashboard">
+					<h1>DASHBOARD</h1>
+				</div>
+				<ul class="navbar-nav ms-auto mb-2 mb-lg-2 text-uppercase ">
+					<li class="nav-item"><a class="nav-link active text-light"
+						aria-current="page" th:href="@{/welcome}">Home</a></li>
+					<li class="nav-item"><a class="nav-link text-light"
+						th:href="@{/about}">About</a></li>
+
+					<li class="nav-item"><a class="nav-link  text-light"
+						th:href="@{/login}">Login</a></li>
+
+					<li class="nav-item"><a class="nav-link text-light"
+						th:href="@{/registration}">SignUp</a></li>
+
+					<li class="nav-item"><a class="nav-link text-light"
+						th:href="@{/contactus}">ContactUs</a></li>
+
+
+				</ul>
+
+			</div>
+		</div>
+	</nav>
+
+	<!--End Navber  -->
+	<div th:replace="${content}"></div>
+
+	<!-- 	Footer -->
+	<div class="container-fluid text-light mt-5">
+		<div class="Footer">
+			<div class="left">
+				<ul>
+					<li>About Us</li>
+					<li>Contact Us</li>
+					<li>Shipping Policy</li>
+					<li>Refund Policy</li>
+					<li>Privacy Policy</li>
+					<li>Delivery Info</li>
+					<li>Terms and Conditions</li>
+				</ul>
+			</div>
+			<div class="middle  container">
+				<div class="row">
+					<div class="card  mt-5 ms-5" style="width: 18rem">
+						<img src="../images/front.webp" class="card-img-top" alt="..." />
+					</div>
+					<div class="card-body text-light mt-5">
+						<p class="card-text ">Some quick example text to build on the
+							card title and make up the bulk of the card's content.</p>
+					</div>
+				</div>
+			</div>
+			<div class="right  conatiner">
+				<div class="row">
+					<div class="card-body text-light mt-5">
+						<h2 class="text-center">Social Media Detail</h2>
+						<ul class="text-center">
+							<li><i class="fab fa-instagram"></i></li>
+							<li><i class="fab fa-facebook"></i></li>
+							<li><i class="fab fa-twitter"></i></li>
+							<li><i class="fab fa-linkedin"></i></li>
+						</ul>
+						<p class="card-text text-center ">
+							Some quick example text to build on the <br /> card title and
+							make up the bulk of the card's content.
+						</p>
+					</div>
+					<h2 class="text-center">Payment Method</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+	crossorigin="anonymous"></script>
+</html>

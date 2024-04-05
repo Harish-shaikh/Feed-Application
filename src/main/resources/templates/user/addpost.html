@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{user/base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${title}">Document</title>
+</head>
+<body>
+
+<section>
+    <div class="container">
+        <div class="form-container">
+            <!-- Check if the success variable is true -->
+            <th:block th:if="${success}">
+                <div class="alert alert-success" role="alert">
+                    Your post has been submitted successfully!
+                </div>
+            </th:block>
+            <h2 class="mb-4 text-center">Create New Post</h2>
+            <form th:action="@{/api1/user/submit-post}" method="POST" th:object="${postData}" enctype="multipart/form-data">
+                <div class="container post-bar">
+                    <div class="pl-bar">
+                        <div class="form-group">
+                            <label for="postTitle">Post Title:</label>
+                            <input type="text" class="form-control" id="postTitle" name="postTitle" required="required">
+                        </div>
+                    </div>
+                    <div class="pr-bar">
+                        <div class="form-group">
+                            <label for="postContent">Post Content:</label>
+                            <textarea class="form-control" id="postContent" name="postContent" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group UploadImage">
+                    <label class="text-center" for="postImage" style="width: 100%;">
+                        <input type="file" class="form-control-file" id="postImage" name="postImage" style="display: none;">
+                        <span id="fileLabel">UploadImage</span>
+                    </label>
+                </div>
+                <div class="post-button">
+                    <button type="submit" class="btn btn-primary">Post</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

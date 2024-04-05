@@ -1,0 +1,167 @@
+/* Custom CSS */
+.Dashboard {
+	color: red;
+	margin-left: 5rem;
+}
+
+.main-bar {
+	display: flex;
+	justify-content: space-between;
+}
+
+.main-bar .left-bar {
+	width: 20rem;
+	background-color: #008040;
+	height: 30.5rem;
+}
+
+.main-bar .right-bar {
+	width: 72rem;
+	background-color: #e8eceb;
+	box-shadow: 10px 10px 10px 15px rgba(0, 0, 0, 0.1);
+	margin: 1rem;
+}
+
+.post-bar label {
+	font-size: 1.2rem;
+	font-weight: 600;
+}
+
+.UploadImage {
+	width: 100%;
+	background-color: #80ffff;
+	border-radius: 2rem;
+	margin-top: 2rem;
+	height: 3.5rem;
+}
+
+.UploadImage label {
+	font-size: 2rem;
+	font-weight: 600;
+	color: white;
+}
+
+.UploadImage label:hover {
+	font-size: 2.3rem;
+	font-weight: 600;
+	color: red;
+	translate: 2s;
+}
+
+.post-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 2rem;
+}
+
+.post-button button {
+	width: 5rem;
+}
+
+.post-button button:hover {
+	color: red;
+}
+
+.list-group {
+	margin-top: 2rem;
+}
+
+.list-group-item {
+	border: none;
+	border-bottom: 2px solid #dee2e6;
+	padding: 15px;
+	font-size: 1.2rem;
+	font-weight: 600;
+}
+
+.list-group-item:hover {
+	background-color: #0000ff;
+	color: white;
+	font-size: 1.5rem;
+}
+/* dashboard css */
+.d-list-item {
+	display: flex;
+	justify-content: space-between;
+	background-color: #008040;
+	margin-top: -3rem;
+	border-radius: 2rem;
+}
+
+.d-list-item li {
+	list-style: none;
+	float: right;
+	margin-left: 2rem;
+}
+
+.d-list-item li a {
+	text-decoration: none;
+	color: white;
+	font-size: 1.3rem;
+	font-weight: 600;
+}
+
+.d-list-item li a:hover {
+	color: red;
+	font-size: 1.3rem;
+	font-weight: 600;
+}
+
+/* post */
+.card-header img{
+	width: 20rem;
+	height: 10rem;
+}
+/* this is footer page */
+.Footer {
+  width: 100%;
+  height: 25rem;
+  background: linear-gradient(150deg, rgb(0, 0,0), rgb(46, 62, 35));
+  display: flex;
+  justify-content: space-around;
+}
+.Footer .left {
+  width: 40rem;
+  border-right: 1px dotted silver;
+  height: 80%;
+  margin-top: 2rem;
+}
+.Footer .left ul {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.Footer .left ul li {
+  list-style: none;
+  padding: 5px;
+}
+.Footer .left ul li:hover {
+  color: red;
+  font-size: 1.5rem;
+}
+.Footer .middle {
+  width: 40rem;
+  border-right: 1px dotted silver;
+  height: 80%;
+  margin-top: 2rem;
+  margin-left: 10rem;
+}
+.Footer .middle img {
+  display: flex;
+  align-items: center;
+ 
+}
+.Footer .right ul {
+  display: flex;
+  margin-left: 1rem;
+}
+.Footer .right ul li {
+  list-style: none;
+  margin-left: 3rem;
+  font-size: 2rem;
+}
+.Footer .right ul li:hover {
+  color: red;
+  font-size: 2.2rem;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{user/base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${title}">Document</title>
+<script>
+	function updateFileName() {
+		var fileInput = document.getElementById('postImage');
+		var fileLabel = document.getElementById('fileLabel');
+		if (fileInput.files.length > 0) {
+			fileLabel.innerText = fileInput.files[0].name;
+		} else {
+			fileLabel.innerText = 'Upload Image';
+		}
+	}
+</script>
+</head>
+<body>
+
+	<section>
+		<div class="container">
+			<div class="form-container">
+				<div th:if="${session.message}"
+					th:classappend="${session.message.type}" class="alert" role="alert">
+					<p class="text-center" th:text="${session.message.content}"></p>
+					<th:block th:text="${@removeSession.removeSession()}"></th:block>
+				</div>
+				<h2 class="mb-4 text-center">Update Post</h2>
+				<form th:action="@{/api1/user/process-update}" method="POST"
+					enctype="multipart/form-data">
+					<!-- Hidden input field for postId -->
+					<input type="hidden" name="postId" th:value="${postData.postId}" />
+					<div class="container post-bar">
+						<div class="pl-bar">
+							<div class="form-group">
+								<label for="postTitle">Post Title:</label> <input type="text"
+									class="form-control" id="postTitle" name="postTitle"
+									th:value="${postData.postTitle}" required="required">
+							</div>
+						</div>
+						<div class="pr-bar">
+							<div class="form-group">
+								<label for="postContent">Post Content:</label>
+								<textarea class="form-control" id="postContent"
+									name="postContent" rows="3" th:text="${postData.postContent}"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="form-group UploadImage">
+						<label class="text-center" for="postImage" style="width: 100%;">
+							<input type="file" class="form-control-file" id="postImage"
+							name="postImages" style="display: none;"
+							onchange="updateFileName()"> <span id="fileLabel">Upload
+								Image</span>
+						</label>
+					</div>
+					<div class="post-button">
+						<button type="submit" class="btn btn-primary">Update Post</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+
+</body>
+</html>

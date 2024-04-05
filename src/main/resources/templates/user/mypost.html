@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{user/base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+
+<section>
+    <div class="container mt-2">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="card mt-2">
+                    <!-- Check if myposts is empty -->
+                    <th:block th:if="${#lists.isEmpty(myposts)}">
+                        <div class="card-header mt-2">
+                            <p class="text-center">Sorry, no posts available.</p>
+                        </div>
+                    </th:block>
+                    <!-- If myposts is not empty, display posts -->
+                    <th:block th:each="p : ${myposts}">
+                        <div class="card-header mt-2">
+                            <!-- Author Name -->
+                            <span th:text="${p.user.userName}">Author Name</span>
+                            <!-- Post Date -->
+                            <small class="text-muted ml-2" th:text="${#dates.format(p.postDate, 'dd MMMM yyyy')}"></small>
+                        </div>
+                        <!-- Post Image -->
+                        <img th:src="@{'/images/'+${p.postImageUrl}}" class="card-img-top" alt="Post Image">
+                        <div class="card-body">
+                            <!-- Post Title -->
+                            <h5 class="card-title" th:text="${p.postTitle}">Post Title</h5>
+                            <!-- Font Awesome Icons for Like, Comment, and Other -->
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <i class="fas fa-thumbs-up text-primary"></i> Like <i class="fas fa-comment text-primary ml-2"></i> Comment
+                                </div>
+                                <div>
+                                    <i class="fas fa-ellipsis-h text-primary"></i> Other
+                                </div>
+                            </div>
+                        </div>
+                    </th:block>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

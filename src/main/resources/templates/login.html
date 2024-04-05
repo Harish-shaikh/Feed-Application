@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="my-card">
+						<div th:if="${param.error}" class="alert alert-danger">
+							invalidate username and passowrd</div>
+						<div th:if="${param.logout}" class="alert alert-success">
+							You have been logout</div>
+
+						<h1 class="text-center">Register Here</h1>
+						<!-- form -->
+						<form th:action="@{/login}" method="post">
+							<!-- name-filed -->
+							<div class="mb-3">
+								<label for="name-field" class="form-label">Email.ID</label> <input
+									type="text" class="form-control" placeholder="Email"
+									name="username" required id="name-field"
+									>
+							</div>
+
+							<div class="mb-3">
+								<label for="password-field" class="form-label">Password</label>
+								<input type="password" class="form-control"
+									placeholder="password" name="password" required
+									id="password-field" >
+							</div>
+
+							<!-- term and condition aggrement
+							<div class="form-group form-check">
+
+								<label for=""><a th:href="@{/signup/}">New
+										Registration</a></label>
+							</div> -->
+							<div class="container text-center">
+								<button type="submit" class="btn btn-primary ">Submit</button>
+
+							</div>
+						</form>
+						<!-- end-form -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</body>
+</html>

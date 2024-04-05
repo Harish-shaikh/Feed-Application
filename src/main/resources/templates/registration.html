@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="my-card">
+
+						<div th:if="${session.message}"
+							th:classappend="${session.message.type}" class="alert"
+							role="alert">
+							<p class="text-center" th:text="${session.message.content}"></p>
+							<th:block th:text="${@removeSession.removeSession()}"></th:block>
+						</div>
+
+						<h1 class="text-center">Register Here</h1>
+						<!-- form -->
+						<form th:action="@{/adduser}" method="post" th:object="${data}">
+							<!-- name-filed -->
+							<div class="mb-3">
+								<label for="name-field" class="form-label">UserName</label> <input
+									type="text" class="form-control" placeholder="name"
+									name="userName" required id="name-field"
+									aria-describedby="emailHelp" th:vale="@{data.userName}">
+							</div>
+							<!-- email-filed -->
+							<div class="mb-3">
+								<label for="email-field" class="form-label">Email</label> <input
+									type="email" class="form-control" placeholder="email"
+									name="email" required id="email-field"
+									aria-describedby="emailHelp">
+							</div>
+							<!-- mobile-filed -->
+							<div class="mb-3">
+								<label for="mobile-field" class="form-label">Mobile</label> <input
+									type="text" class="form-control" placeholder="Mobile"
+									name="Mobile" required id="mobile-field">
+							</div>
+							<!-- password-filed -->
+							<div class="mb-3">
+								<label for="password-field" class="form-label">Password</label>
+								<input type="password" class="form-control"
+									placeholder="password" name="password" required
+									id="password-field" aria-describedby="emailHelp">
+							</div>
+							<!-- 	Drop Down option -->
+							<label for="role">Select Role:</label> <select id="role" name="role">
+								<option value="USER">User</option>
+								<option value="ADMIN">Admin</option>
+							</select>
+
+
+							<!--button field  -->
+							<div class="container text-center">
+								<button type="submit" class="btn btn-primary ">Submit</button>
+								<button type="reset" class="btn btn-warning ">Reset</button>
+							</div>
+						</form>
+						<!-- end-form -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
